@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Mission1_1 {
+
     public static void main(String[] args) {
         MiddleNumber middleNumber = new MiddleNumber();
         middleNumber.printMiddleNumber();
