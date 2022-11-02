@@ -1,0 +1,4 @@
+rootProject.name = 'CodeSquad_PreCourse'
+include 'mission1'
+include 'mission1_1'
+
