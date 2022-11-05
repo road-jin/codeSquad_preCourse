@@ -152,12 +152,12 @@ public class ConditionalPreactice {
 
     public static class BaekJoon2525 {
         public String getOvenEndTime(int hour, int minute, int cookingTime) {
-            int resultHour = hour + (cookingTime / 60);
-            int resultMinute = minute + (cookingTime % 60);
+            int resultHour = hour;
+            int resultMinute = minute + cookingTime;
 
             if (resultMinute >= 60) {
                 resultMinute %= 60;
-                resultHour++;
+                resultHour += (cookingTime / 60);
             }
 
             if (resultHour >= 24) {

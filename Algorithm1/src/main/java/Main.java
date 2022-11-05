@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+
     private static final Scanner scanner = new Scanner(System.in);
     private static int count = 0;
 

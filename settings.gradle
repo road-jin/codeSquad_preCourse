@@ -2,4 +2,5 @@ rootProject.name = 'CodeSquad_PreCourse'
 include 'mission1'
 include 'mission1_1'
 include 'Algorithm1'
+include 'mission2'
 
