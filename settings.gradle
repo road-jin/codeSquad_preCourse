@@ -4,4 +4,5 @@ include 'mission1_1'
 include 'Algorithm1'
 include 'mission2'
 include 'mission2_1'
+include 'mission3'
 
