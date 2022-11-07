@@ -26,8 +26,6 @@ public class Main {
         System.out.println(jane.showPersonInfo());
         */
 
-
-
         // 문제 #3
         Cafe starbucks = new Cafe("별다방");
         Cafe bean = new Cafe("콩다방");
