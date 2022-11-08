@@ -1,27 +1,26 @@
 package org.codesquad.maze;
 
 public class Coordinate {
+
     private final int x;
     private final int y;
-    private final int preX;
-    private final int preY;
 
-    public Coordinate(int x, int y, int preX, int preY) {
+    public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
-        this.preX = preX;
-        this.preY = preY;
     }
 
-    public int[] xy() {
+
+    public int[] show() {
         return new int[] {x, y};
     }
 
-    public String show() {
-        return "(" + x + "," + y + ")";
-    }
+    public static boolean isValid(int x, int y, int[][] map) {
+        if ((x >= 0 && x < map[0].length) &&
+                (y >= 0 && y < map.length) && map[y][x] == 0) {
+            return true;
+        }
 
-    public boolean isPrevious(Coordinate coordinate) {
-        return preX == coordinate.x && preY == coordinate.y;
+        return false;
     }
 }

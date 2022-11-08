@@ -10,11 +10,16 @@ public class BookList {
         this.books = new ArrayList<>();
     }
 
-    public void add(Book book) {
-        books.add(book);
+    public BookList(ArrayList<Book> books) {
+        this.books = books;
     }
 
-    public BookList copy() {
+    public BookList shallowCopy() {
+        return new BookList((ArrayList<Book>) books.clone());
+    }
+
+    public BookList deepCopy() {
+
         BookList copyBooks = new BookList();
         books.forEach((book) -> copyBooks.add(book));
         return copyBooks;
@@ -25,6 +30,9 @@ public class BookList {
         System.out.println();
     }
 
+    public void add(Book book) {
+        books.add(book);
+    }
 
     public void update(Book findBook, Book updateBook) {
         books.remove(findBook);

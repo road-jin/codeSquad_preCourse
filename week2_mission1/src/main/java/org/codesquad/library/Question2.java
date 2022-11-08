@@ -1,18 +1,8 @@
-package org.codesquad;
+package org.codesquad.library;
 
-import org.codesquad.alphabet.AlphabetArray;
-import org.codesquad.library.Book;
-import org.codesquad.library.BookList;
-import org.codesquad.library.Library;
-import org.codesquad.maze.Maze;
-
-public class Main {
+public class Question2 {
 
     public static void main(String[] args) {
-        // 문제1
-        AlphabetArray alphabetArray = new AlphabetArray();
-        alphabetArray.print();
-
         // 문제2
         Book book1 = new Book("태백산맥", "조정래");
         Book book2 = new Book("이기적 유전자", "리처드 도킨즈");
@@ -27,10 +17,10 @@ public class Main {
         books.add(book4);
         books.add(book5);
 
-        BookList copyBooks = books.copy();
+        BookList copyBooks = books.shallowCopy();
 
-        Library onVillage = new Library(books.copy());
-        Library doVillage = new Library(books.copy());
+        Library onVillage = new Library(copyBooks);
+        Library doVillage = new Library(copyBooks.deepCopy());
 
         onVillage.showBooks();
         copyBooks.showAll();
@@ -46,9 +36,5 @@ public class Main {
         onVillage.showBooks();
         copyBooks.showAll();
         doVillage.showBooks();
-
-        // 문제3
-        Maze maze = new Maze();
-        maze.findExit();
     }
 }
