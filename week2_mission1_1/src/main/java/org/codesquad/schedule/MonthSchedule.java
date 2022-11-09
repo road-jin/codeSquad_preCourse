@@ -25,7 +25,8 @@ public class MonthSchedule {
         MonthScheduleView.init();
 
         while(isExit()) {
-            menuExecute(MonthScheduleView.getMenu());
+            menu = MonthScheduleView.getMenu();
+            menuExecute(menu);
         }
     }
 

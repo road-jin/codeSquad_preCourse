@@ -30,9 +30,8 @@ public class WordChainGame {
     }
 
     private void playUser(int nameIndex, String inputWord) {
-        String name = names[nameIndex];
         Word word = new Word(inputWord);
-        String answerWord = WordChainView.getWord(name);
+        String answerWord = WordChainView.getWord(names[nameIndex]);
 
         if (word.isWordCheck(answerWord) && !checkWord.contains(answerWord)) {
             checkWord.add(answerWord);
