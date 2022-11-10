@@ -34,11 +34,10 @@ public class Student implements Comparable<Student>{
         return name + "\t" + studentId + "\t" + coursesList.infoFileWriteConverter();
     }
 
-    public String info() {
-        return name + " 학생은 " +
-                coursesList.size() + "과목을 수강했습니다.\n" +
-                "총점은 " + coursesList.totalScore() + "점이고 " +
-                "평균은 " + coursesList.averageScore() + "입니다.\n";
+    public String[] info() {
+        return new String[] {name, String.valueOf(coursesList.size()),
+                String.valueOf(coursesList.totalScore()),
+                String.valueOf(coursesList.averageScore())};
     }
 
     public Student createStudent(CoursesList coursesList) {

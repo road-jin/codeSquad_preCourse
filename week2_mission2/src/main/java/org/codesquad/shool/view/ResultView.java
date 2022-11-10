@@ -3,6 +3,7 @@ package org.codesquad.shool.view;
 import org.codesquad.shool.FileSystem;
 import org.codesquad.shool.student.Student;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ResultView {
@@ -13,7 +14,14 @@ public class ResultView {
 
     public static void gradeReadView() {
         List<Student> studentList = FileSystem.getStudentList();
-        studentList.forEach(student -> System.out.println(student.info()));
+        studentList.forEach(student -> {
+            String[] info = student.info();
+            DecimalFormat zeroRemove = new DecimalFormat("#.##");
+            String average = zeroRemove.format(Double.valueOf(info[3]));
+
+            System.out.printf("%s 학생은 %d과목을 수강했습니다.\n", info[0], Integer.parseInt(info[1]));
+            System.out.printf("총점은 %d점이고 평균은 %s점입니다.\n", Integer.parseInt(info[2]), average);
+        });
     }
 
     public static void studentView() {

@@ -24,9 +24,9 @@ public class CoursesList {
         return totalScore;
     }
 
-    public int averageScore() {
+    public double averageScore() {
         int totalScore = totalScore();
-        return totalScore / coursesList.size();
+        return totalScore / (double) coursesList.size();
     }
 
     public String infoFileWriteConverter() {
