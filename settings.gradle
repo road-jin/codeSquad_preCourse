@@ -9,4 +9,6 @@ include 'week2_mission1'
 include 'week2_mission1_1'
 include 'Algorithm2'
 include 'week2_mission2'
+include 'school_test_score_management'
+include 'week3_mission1'
 
