@@ -1,6 +1,7 @@
 package org.codesquad.caffe;
 
 import org.codesquad.caffe.v1.*;
+import org.codesquad.caffe.v2.*;
 
 public class Question2 {
 
@@ -26,5 +27,26 @@ public class Question2 {
         hawaiiWhippedMocha.brewing();
         System.out.println();
 
+        System.out.println("==================================================");
+
+        CoffeeV2 etiopiaAmericanoV2 = new EtiopiaAmericanoV2();
+        etiopiaAmericanoV2.brewing();
+        System.out.println();
+
+        CoffeeV2 kenyaAmericanoV2 = new KenyaAmericanoV2();
+        kenyaAmericanoV2.brewing();
+        System.out.println();
+
+        CoffeeV2 kenyaLatteV2 = new LatteV2(kenyaAmericanoV2);
+        kenyaLatteV2.brewing();
+        System.out.println();
+
+        CoffeeV2 brazilMochaV2 = new MochaV2(new LatteV2(new BrazilAmericanoV2()));
+        brazilMochaV2.brewing();
+        System.out.println();
+
+        CoffeeV2 hawaiiWhippedMochaV2 = new WhippedCreamV2(new MochaV2(new LatteV2( new HawaiiAmericanoV2())));
+        hawaiiWhippedMochaV2.brewing();
+        System.out.println();
     }
 }

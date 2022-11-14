@@ -2,7 +2,7 @@ package org.codesquad.departmentstore.v2;
 
 import java.util.UUID;
 
-public class Member2 {
+public class MemberV2 {
 
     private final UUID id;
     private final String name;
@@ -10,7 +10,7 @@ public class Member2 {
     private int buyPrice;
     private int shoppingHours;
 
-    public Member2(String name, MemberShip memberShip, int buyPrice, int shoppingHours) {
+    public MemberV2(String name, MemberShip memberShip, int buyPrice, int shoppingHours) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.memberShip = memberShip;
