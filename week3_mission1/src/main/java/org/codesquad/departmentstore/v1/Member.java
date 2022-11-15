@@ -6,11 +6,13 @@ public abstract class Member {
 
     private final UUID id;
     private final String name;
-    protected boolean vip;
+    private final boolean vip;
+    protected
 
-    public Member(String name) {
+    public Member(String name, boolean vip) {
         this.id = UUID.randomUUID();
         this.name = name;
+        this.vip = vip;
     }
 
     abstract int calculatePrice(int buyPrice);

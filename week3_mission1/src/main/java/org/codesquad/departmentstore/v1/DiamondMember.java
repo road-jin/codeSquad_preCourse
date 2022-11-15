@@ -3,25 +3,24 @@ package org.codesquad.departmentstore.v1;
 public class DiamondMember extends Member {
 
     public DiamondMember(String name) {
-        super(name);
-        super.vip = true;
+        super(name, true);
     }
 
     @Override
     int calculatePrice(int buyPrice) {
-        double PRICE_DISCOUNT_RATIO = 0.1;
-        return buyPrice - (int) (buyPrice * PRICE_DISCOUNT_RATIO);
+        double priceDiscountRatio = 0.1;
+        return buyPrice - (int) (buyPrice * priceDiscountRatio);
     }
 
     @Override
     int calculatePoint(int buyPrice) {
-        double POINT_RATIO = 0.1;
-        return (int) (buyPrice * POINT_RATIO);
+        double pointRatio = 0.1;
+        return (int) (buyPrice * pointRatio);
     }
 
     @Override
     int calculateParkingFee(int shoppingHours) {
-        int PARKING_FEE = 0;
-        return shoppingHours * PARKING_FEE;
+        int parkingFee = 0;
+        return shoppingHours * parkingFee;
     }
 }
