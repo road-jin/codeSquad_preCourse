@@ -1,7 +1,5 @@
 package org.codesquad.caffe.v2;
 
-import org.codesquad.caffe.v2.CoffeeV2;
-
 public class BrazilAmericanoV2 implements CoffeeV2 {
 
     @Override
