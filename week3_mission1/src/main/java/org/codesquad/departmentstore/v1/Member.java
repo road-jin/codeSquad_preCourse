@@ -7,7 +7,6 @@ public abstract class Member {
     private final UUID id;
     private final String name;
     private final boolean vip;
-    protected
 
     public Member(String name, boolean vip) {
         this.id = UUID.randomUUID();
