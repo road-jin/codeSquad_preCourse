@@ -58,26 +58,10 @@ public class Question2 {
             return grade;
         }
 
-        int nextMultiple = getNextMultiple(grade);
-
-        if (nextMultiple - grade < 3) {
-            return nextMultiple;
+        if (grade % 5 > 2) {
+            return grade + (5 - grade % 5);
         }
 
         return grade;
-    }
-
-    public static Integer getNextMultiple(Integer grade) {
-        int nextMultiple = grade;
-
-        if (grade % 5 == 0) {
-            return nextMultiple;
-        }
-
-        for (int i = 0; i < 5 - grade % 5; i++) {
-            nextMultiple++;
-        }
-
-        return nextMultiple;
     }
 }
