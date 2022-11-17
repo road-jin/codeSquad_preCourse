@@ -13,4 +13,5 @@ include 'school_test_score_management'
 include 'week3_mission1'
 include 'week3_mission1_1'
 include 'Algorithm3'
+include 'week3_mission2'
 
