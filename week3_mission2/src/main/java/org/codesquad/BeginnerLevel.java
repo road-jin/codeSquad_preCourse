@@ -2,15 +2,6 @@ package org.codesquad;
 
 public class BeginnerLevel implements PlayerLevel {
 
-    private static BeginnerLevel beginnerLevel = new BeginnerLevel();
-
-    private BeginnerLevel() {
-    }
-
-    public static BeginnerLevel getInstance() {
-        return beginnerLevel;
-    }
-
     @Override
     public void run() {
         System.out.println("천천히 달립니다.");

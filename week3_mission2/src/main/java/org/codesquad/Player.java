@@ -5,7 +5,7 @@ public class Player {
     private PlayerLevel level;
 
     public Player() {
-        this.level = BeginnerLevel.getInstance();
+        this.level = new BeginnerLevel();
     }
 
     public PlayerLevel getLevel() {

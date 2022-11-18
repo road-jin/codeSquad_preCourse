@@ -2,15 +2,6 @@ package org.codesquad;
 
 public class SuperLevel implements PlayerLevel {
 
-    private static SuperLevel superLevel = new SuperLevel();
-
-    private SuperLevel() {
-    }
-
-    public static SuperLevel getInstance() {
-        return superLevel;
-    }
-
     @Override
     public void run() {
         System.out.println("엄청 빨리 달립니다.");

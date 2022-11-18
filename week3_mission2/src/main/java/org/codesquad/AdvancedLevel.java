@@ -2,15 +2,6 @@ package org.codesquad;
 
 public class AdvancedLevel implements PlayerLevel {
 
-    private static AdvancedLevel advancedLevel = new AdvancedLevel();
-
-    private AdvancedLevel() {
-    }
-
-    public static AdvancedLevel getInstance() {
-        return advancedLevel;
-    }
-
     @Override
     public void run() {
         System.out.println("빨리 달립니다.");
