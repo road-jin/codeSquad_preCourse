@@ -4,22 +4,16 @@ import org.codesquad.support.AutoIDUtil;
 
 import java.util.Objects;
 
-public class Student {
+public class Major {
 
     private final String id;
-    private final String majorId;
     private final String name;
+    private final String requiredSubjectId;
 
-    public Student(String name, String majorId) {
-        this.id = AutoIDUtil.createStudentId();
+    public Major(String name, String requiredSubjectId) {
+        this.id = AutoIDUtil.createMajorId();
         this.name = name;
-        this.majorId = majorId;
-    }
-
-    public Student(String id, String name, String majorId) {
-        this.id = AutoIDUtil.createStudentId(id);
-        this.name = name;
-        this.majorId = majorId;
+        this.requiredSubjectId = requiredSubjectId;
     }
 
     public String getId() {
@@ -30,20 +24,24 @@ public class Student {
         return name;
     }
 
-    public String getMajorId() {
-        return majorId;
+    public String getRequiredSubjectId() {
+        return requiredSubjectId;
     }
 
     public boolean isEqualsId(String id) {
         return this.id.equals(id);
     }
 
+    public boolean isEqualsName(String name) {
+        return this.name.equals(name);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return getId().equals(student.getId());
+        Major major = (Major) o;
+        return Objects.equals(getId(), major.getId());
     }
 
     @Override

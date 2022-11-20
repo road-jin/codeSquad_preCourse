@@ -1,8 +1,9 @@
 package org.codesquad.repository;
 
-import org.codesquad.converter.FileToObject;
+import org.codesquad.support.converter.FileToObject;
 import org.codesquad.domain.Score;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FileScoreRepository implements ScoreRepository{
@@ -16,7 +17,7 @@ public class FileScoreRepository implements ScoreRepository{
 
     @Override
     public List<Score> findAll() {
-        return store;
+        return Collections.unmodifiableList(store);
     }
 
     @Override

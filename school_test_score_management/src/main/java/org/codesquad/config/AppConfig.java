@@ -1,10 +1,8 @@
 package org.codesquad.config;
 
-import org.codesquad.controller.TestScoreManagementController;
+import org.codesquad.controller.MenuController;
 import org.codesquad.repository.*;
-import org.codesquad.service.ScoreService;
-import org.codesquad.service.StudentService;
-import org.codesquad.service.SubjectService;
+import org.codesquad.service.*;
 
 public class AppConfig {
 
@@ -18,21 +16,26 @@ public class AppConfig {
         return appConfig;
     }
 
-    public TestScoreManagementController getTestScoreManagementController() {
-        return new TestScoreManagementController(getStudentService(),
-                getSubjectService(), getScoreService());
+    public MenuController getMenuController() {
+        return new MenuController(getStudentService(), getSubjectService(),
+                getMajorService(), getReportService());
+    }
+
+    public ReportService getReportService() {
+        return new ReportService(getStudentRepository(), getSubjectRepository(),
+                getScoreRepository(), getMajorRepository());
     }
 
     public StudentService getStudentService() {
-        return new StudentService(getStudentRepository());
+        return new StudentService(getStudentRepository(), getScoreRepository());
     }
 
     public SubjectService getSubjectService() {
-        return new SubjectService(getSubjectRepository());
+        return new SubjectService(getSubjectRepository(), getScoreRepository());
     }
 
-    public ScoreService getScoreService() {
-        return new ScoreService(getScoreRepository());
+    public MajorService getMajorService() {
+        return new MajorService(getMajorRepository());
     }
 
     public StudentRepository getStudentRepository() {
@@ -45,5 +48,9 @@ public class AppConfig {
 
     public ScoreRepository getScoreRepository() {
         return new FileScoreRepository();
+    }
+
+    public MajorRepository getMajorRepository() {
+        return new FileMajorRepository();
     }
 }

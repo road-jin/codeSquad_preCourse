@@ -1,10 +1,9 @@
 package org.codesquad.repository;
 
 import org.codesquad.domain.Student;
-import org.codesquad.converter.FileToObject;
-import org.codesquad.util.FileUtil;
-import org.codesquad.converter.ObjectToFile;
+import org.codesquad.support.converter.FileToObject;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FileStudentRepository implements StudentRepository{
@@ -18,13 +17,13 @@ public class FileStudentRepository implements StudentRepository{
 
     @Override
     public List<Student> findAll() {
-        return store;
+        return Collections.unmodifiableList(store);
     }
 
     @Override
     public Student findById(String studentId) {
         return store.stream()
-                .filter(student -> student.getId().equals(studentId))
+                .filter(student -> student.isEqualsId(studentId))
                 .findFirst()
                 .orElseThrow();
     }
@@ -44,11 +43,5 @@ public class FileStudentRepository implements StudentRepository{
     @Override
     public void remove(Student student) {
         store.remove(student);
-    }
-
-    public void save() {
-        ObjectToFile objectToFile = ObjectToFile.getInstance();
-        String writeString = objectToFile.getWriteString();
-        FileUtil.write(writeString);
     }
 }

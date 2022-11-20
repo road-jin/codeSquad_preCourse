@@ -1,63 +1,30 @@
 package org.codesquad.view;
 
-import org.codesquad.domain.Score;
-import org.codesquad.domain.Student;
-import org.codesquad.domain.Subject;
-import org.codesquad.service.ScoreService;
-import org.codesquad.service.SubjectService;
+import org.codesquad.service.dto.ReportResponse;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class ResultView {
 
-    public static void scoreView(List<Student> studentList, ScoreService scoreService) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
-        studentList.stream()
-                .forEach(student -> {
-                    String id = student.getId();
-                    System.out.printf("%s학생은 %s과목을 수강했습니다.\n총점은 %d이고 평균은 %s점 입니다.\n\n",
-                            student.getName(), scoreService.subjectCount(id), scoreService.totalScore(id),
-                            decimalFormat.format(scoreService.average(id)));
-        });
+    public static void start() {
+        System.out.println("=================================");
+        System.out.println("=         성적 관리 프로그램         =");
+        System.out.println("=================================\n");
     }
 
-    public static void studentDetailView(List<Student> studentList, SubjectService subjectService, ScoreService scoreService) {
-        List<Subject> subjectList = subjectService.findAll();
-        studentList.stream()
-                .forEach(student -> {
-                    String subjectName = appendSubjectName(subjectService, student.getRequiredSubjectIdList());
-                    String scoreList = appendScore(scoreService, subjectList, student.getId());
-                    System.out.printf("| 이름 : %s | 학번 : %s | 전공과목 :%s%s\n",
-                            student.getName(), student.getId(), subjectName, scoreList);
+    public static void reportView(List<ReportResponse> reportResponseList) {
+        System.out.println("---------------------------------------");
+        System.out.printf("          %s 수강생 학점\n", reportResponseList.get(0).getSubjectName());
+        System.out.printf("이름 |   학번   | 중점과목 | 점수\n");
+        System.out.println("---------------------------------------");
 
-        });
-    }
+        reportResponseList.stream()
+                .forEach(reportResponse -> {
+                    System.out.printf("%s | %s | %-4s | %s:%s\n", reportResponse.getStudentName(), reportResponse.getStudentId(),
+                            reportResponse.getRequiredSubjectName(), reportResponse.getScore(), reportResponse.getGrade());
+                    System.out.println("---------------------------------------");
+                });
 
-    private static String appendSubjectName(SubjectService subjectService, List<String> requiredSubjectIdList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        requiredSubjectIdList.forEach(subjectId -> {
-            Subject subject = subjectService.findById(subjectId);
-            stringBuilder.append(" ")
-                    .append(subject.getName());
-            }
-        );
-
-        return stringBuilder.toString();
-    }
-
-    private static String appendScore(ScoreService scoreService, List<Subject> subjectList, String studentId) {
-        StringBuilder stringBuilder = new StringBuilder();
-        subjectList.forEach(subject -> {
-            String key = studentId + subject.getId();
-            Score score = scoreService.findById(key);
-            stringBuilder.append(" | ")
-                    .append(subject.getName())
-                    .append(" : ")
-                    .append(score.getScore());
-        });
-
-        return stringBuilder.toString();
+        System.out.println();
     }
 }

@@ -1,4 +1,4 @@
-package org.codesquad.util;
+package org.codesquad.support;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

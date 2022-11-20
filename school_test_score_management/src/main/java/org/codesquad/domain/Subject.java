@@ -1,6 +1,6 @@
 package org.codesquad.domain;
 
-import org.codesquad.util.AutoIDUtil;
+import org.codesquad.support.AutoIDUtil;
 
 import java.util.Objects;
 
@@ -27,9 +27,15 @@ public class Subject  {
         return name;
     }
 
+    public boolean isEqualsId(String id) {
+        return this.id.equals(id);
+    }
+
     public boolean isEqualsName(String name) {
         return this.name.equals(name);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

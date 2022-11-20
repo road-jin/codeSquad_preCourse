@@ -1,8 +1,9 @@
 package org.codesquad.repository;
 
 import org.codesquad.domain.Subject;
-import org.codesquad.converter.FileToObject;
+import org.codesquad.support.converter.FileToObject;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FileSubjectRepository implements SubjectRepository{
@@ -16,13 +17,13 @@ public class FileSubjectRepository implements SubjectRepository{
 
     @Override
     public List<Subject> findAll() {
-        return store;
+        return Collections.unmodifiableList(store);
     }
 
     @Override
     public Subject findById(String subjectId) {
         return store.stream()
-                .filter(subject -> subject.getId().equals(subjectId))
+                .filter(subject -> subject.isEqualsId(subjectId))
                 .findFirst()
                 .orElseThrow();
     }
