@@ -16,11 +16,6 @@ public class MemberShipManagementSet {
     }
 
     public void addMemberShip(int id, String name, Grade grade) {
-        if (findMember(id).isPresent()) {
-            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", id);
-            return;
-        }
-
         memberSet.add(new Member(id, name, grade));
     }
 
@@ -40,18 +35,6 @@ public class MemberShipManagementSet {
         System.out.println("========================================");
         this.memberSet.forEach(m -> System.out.println(m.showInfo()));
         System.out.println("========================================");
-        /*
-        Iterator<Member> iterator = memberSet.iterator();
-
-        while (iterator.hasNext()) {
-            Member member = iterator.next();
-            System.out.println(member.showInfo());
-        }
-
-        for (Member member : memberSet) {
-            System.out.println(member.showInfo());
-        }
-        */
     }
 
     private Optional<Member> findMember(int id) {

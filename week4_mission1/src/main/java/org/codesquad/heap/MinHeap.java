@@ -12,7 +12,6 @@ public class MinHeap implements Heap {
         this.heap[size] = number;
 
         while (parentIndex != 0) {
-
             if (this.heap[parentIndex] > this.heap[childIndex]) {
                 int temp = this.heap[parentIndex];
                 this.heap[parentIndex] = this.heap[childIndex];

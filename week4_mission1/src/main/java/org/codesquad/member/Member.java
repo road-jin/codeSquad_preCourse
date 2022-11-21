@@ -1,6 +1,7 @@
 package org.codesquad.member;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Member implements Comparable<Member>, Comparator<Member> {
 
@@ -27,12 +28,63 @@ public class Member implements Comparable<Member>, Comparator<Member> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        Member member = (Member) o;
+
+        if (this.id == member.id) {
+            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", this.id);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
     public int compareTo(Member o) {
-        return this.id - o.id;
+        int number = this.id - o.id;
+
+        if (number == 0) {
+            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", this.id);
+        }
+
+        return number;
     }
 
     @Override
     public int compare(Member o1, Member o2) {
-        return o1.id - o2.id;
+        int number = o1.id - o2.id;
+
+        if (number == 0) {
+            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", this.id);
+        }
+
+        return number;
     }
+
+/*    @Override
+    public int compareTo(Member o) {
+        int number = this.name.compareTo(o.name);
+
+        if (number == 0) {
+            System.out.printf("이미 있는 이름 %s는 추가할 수 없습니다\n", this.name);
+        }
+
+        return number;
+    }
+
+    @Override
+    public int compare(Member o1, Member o2) {
+        int number = o1.name.compareTo(o2.name);
+
+        if (number == 0) {
+            System.out.printf("이미 있는 이름 %s는 추가할 수 없습니다\n", this.name);
+        }
+
+        return number;
+    }*/
 }

@@ -16,16 +16,6 @@ public class MemberShipManagementTreeSet {
     }
 
     public void addMemberShip(int id, String name, Grade grade) {
-        if (findById(id).isPresent()) {
-            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", id);
-            return;
-        }
-
-        /*if (findByName(name).isPresent()) {
-            System.out.printf("이미 있는 이름 %s은 추가할 수 없습니다\n", name);
-            return;
-        }*/
-
         memberSet.add(new Member(id, name, grade));
     }
 
