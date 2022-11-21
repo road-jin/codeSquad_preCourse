@@ -16,7 +16,9 @@ public class MemberShipManagementSet {
     }
 
     public void addMemberShip(int id, String name, Grade grade) {
-        memberSet.add(new Member(id, name, grade));
+        if (!memberSet.add(new Member(id, name, grade))) {
+            System.out.printf("이미 있는 아이디 %d는 추가할 수 없습니다\n", id);
+        }
     }
 
     public boolean removeMember(int id) {
