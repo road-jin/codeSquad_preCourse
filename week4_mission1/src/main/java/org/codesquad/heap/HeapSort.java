@@ -5,8 +5,8 @@ public class HeapSort {
     private final Heap heap;
 
     public HeapSort() {
-        //this.heap = new MinHeap();
-        this.heap = new MaxHeap();
+        this.heap = new MinHeap();
+        //this.heap = new MaxHeap();
     }
 
     public void insertHeap(int number) {

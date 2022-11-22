@@ -1,66 +1,32 @@
 package org.codesquad.heap;
 
+import java.util.Arrays;
+
 public class MaxHeap implements Heap{
 
-    private final int[] heap = new int[100];
+    private int[] heap = new int[1];
     private int size = 1;
 
     @Override
     public void insert(int number) {
-        int parentIndex = this.size / 2;
-        int childIndex = this.size;
+        heapReSize(this.heap.length + 1, this.size + 1);
 
         this.heap[this.size] = number;
-
-        while (parentIndex != 0) {
-
-            if (this.heap[parentIndex] < this.heap[childIndex]) {
-                int temp = this.heap[parentIndex];
-                this.heap[parentIndex] = this.heap[childIndex];
-                this.heap[childIndex] = temp;
-                childIndex /= 2;
-                parentIndex /= 2;
-                continue;
-            }
-
-            this.size++;
-            return;
-        }
-
         this.size++;
+
+        upHeapify();
     }
 
     @Override
     public int delete() {
-        int index = 1;
-        int childIndex = 1 * 2;
         int lastNumber = this.heap[1];
 
-        this.heap[index] = this.heap[this.size - 1];
+        this.heap[1] = this.heap[this.size - 1];
         this.heap[this.size - 1] = 0;
         this.size--;
 
-        while (childIndex <= this.size - 1) {
-            if (this.heap[childIndex + 1] == 0) {
-                break;
-            }
-
-            if (this.heap[childIndex] < this.heap[childIndex + 1]) {
-                int temp = this.heap[index];
-                this.heap[index] = this.heap[childIndex + 1];
-                this.heap[childIndex + 1] = temp;
-                index = childIndex + 1;
-                childIndex = index * 2;
-                continue;
-            }
-
-            int temp = this.heap[index];
-            this.heap[index] = this.heap[childIndex];
-            this.heap[childIndex] = temp;
-            index = childIndex;
-            childIndex = index * 2;
-        }
-
+        downHeapify();
+        heapReSize(this.heap.length, this.size);
         return lastNumber;
     }
 
@@ -81,5 +47,53 @@ public class MaxHeap implements Heap{
         }
 
         return stringBuilder.toString();
+    }
+
+    private void heapReSize(int heapSize, int newHeapSize) {
+        if (this.size < heapSize) {
+            this.heap = Arrays.copyOf(this.heap, newHeapSize);
+        }
+    }
+
+    private void upHeapify() {
+        int childIndex = this.size - 1;
+        int parentIndex = childIndex / 2;
+
+        while (parentIndex != 0) {
+            if (this.heap[parentIndex] < this.heap[childIndex]) {
+                changeValue(parentIndex, childIndex);
+                childIndex /= 2;
+                parentIndex /= 2;
+                continue;
+            }
+
+            break;
+        }
+    }
+
+    private void downHeapify() {
+        int parentIndex = 1;
+        int childIndex = parentIndex * 2;
+
+        while (childIndex <= this.size - 1) {
+            if (childIndex + 1 < this.size &&
+                    this.heap[childIndex] < this.heap[childIndex + 1]) {
+                childIndex = parentIndex * 2 + 1;
+            }
+
+            if (this.heap[parentIndex] > this.heap[childIndex]) {
+                break;
+            }
+
+            changeValue(parentIndex, childIndex);
+            parentIndex = childIndex;
+            childIndex = parentIndex * 2;
+        }
+    }
+
+    private void changeValue(int parentIndex, int childIndex) {
+        int temp = this.heap[parentIndex];
+        this.heap[parentIndex] = this.heap[childIndex];
+        this.heap[childIndex] = temp;
     }
 }
