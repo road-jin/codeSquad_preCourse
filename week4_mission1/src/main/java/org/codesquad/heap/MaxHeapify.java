@@ -7,15 +7,10 @@ public class MaxHeapify implements Heapify {
         int childIndex = size - 1;
         int parentIndex = childIndex / 2;
 
-        while (parentIndex != 0) {
-            if (heap[parentIndex] < heap[childIndex]) {
-                changeValue(parentIndex, childIndex, heap);
-                childIndex /= 2;
-                parentIndex /= 2;
-                continue;
-            }
-
-            break;
+        while (parentIndex != 0 && heap[parentIndex] < heap[childIndex]) {
+            changeValue(parentIndex, childIndex, heap);
+            childIndex /= 2;
+            parentIndex /= 2;
         }
     }
 
