@@ -17,4 +17,6 @@ include 'week3_mission2'
 include 'week4_mission1'
 include 'week3_mission2_1'
 include 'week4_mission1_1'
+include 'week4_mission2_server'
+include 'week4_mission2_client'
 
